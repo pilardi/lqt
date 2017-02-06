@@ -1,6 +1,14 @@
 Lucene Query Tool (lqt)
 =======================
 
+Fork
+----
+
+Patched to work with CH indexes:
+
+- lucene 5.2.1
+- includes ChCompressionCodec
+
 Introduction
 ------------
 
