@@ -1,0 +1,16 @@
+#! /bin/sh
+#
+# Convenience driver script.
+
+dir=$(dirname $0)
+
+if [ -e $dir/target/classes/com/basistech/lucene/tools/LuceneQueryTool.class ]; then
+    CP=$dir:$dir/target/classes:$(cat $dir/target/classpath.txt)
+    java $JVM_ARGS -Dfile.encoding=UTF-8 -cp $CP com.basistech.lucene.tools.LuceneQueryTool "$@"
+else # single jar build with mvn clean compile assembly:single -DskipTests
+    if [ -e $dir/target/lqt-9-SNAPSHOT-jar-with-dependencies.jar ]; then
+        java $JVM_ARGS -Dfile.encoding=UTF-8 -cp $dir/target/lqt-9-SNAPSHOT-jar-with-dependencies.jar com.basistech.lucene.tools.LuceneQueryTool "$@"
+    else
+        echo "Please run 'mvn compile' first."
+        exit 1
+fi
