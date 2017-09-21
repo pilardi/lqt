@@ -1,3 +1,5 @@
+TODO ADD protobuf support
+
 Lucene Query Tool (lqt)
 =======================
 
